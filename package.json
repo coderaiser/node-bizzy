@@ -1,7 +1,7 @@
 {
   "name": "bizzy",
   "version": "1.0.0",
-  "description": "pack and extract .tar.bz2 archives with emitter",
+  "description": "extract .tar.bz2 archives with emitter",
   "main": "lib/bizzy.js",
   "bin": {
     "bizzy": "bin/bizzy.js"
