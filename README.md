@@ -21,7 +21,7 @@ Options:
 
 ## Local
 
-`Bizzy` could be used localy. It will emit event on every packed/extracted file.
+`Bizzy` could be used localy. It will emit event on every extracted file.
 Good for making progress bars.
 
 ### Install
@@ -43,7 +43,7 @@ const name = 'pipe.tar.gz';
 const to = cwd + '/pipe-io';
 const from = path.join(cwd, name);
 
-const extract = bizzy.extract(from, to);
+const extract = bizzy(from, to);
 
 extract.on('file', (name) => {
     console.log(name);
