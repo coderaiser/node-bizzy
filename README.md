@@ -32,14 +32,14 @@ npm i bizzy --save
 
 ### How to use?
 
-- `from` - path to **.tar.gz** archive
+- `from` - path to **.tar.bz2** archive
 - `to` - path to directory where files would be stored.
 
 ```js
 const bizzy = require('bizzy');
 const path = require('path');
 const cwd = process.cwd();
-const name = 'pipe.tar.gz';
+const name = 'pipe.tar.bz2';
 const to = cwd + '/pipe-io';
 const from = path.join(cwd, name);
 
