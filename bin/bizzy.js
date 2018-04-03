@@ -2,21 +2,15 @@
 
 'use strict';
 
-const jaguar = require('..');
+const bizzy = require('..');
 const path = require('path');
 const glob = require('glob');
 const argv = process.argv;
 
 const args = require('minimist')(argv.slice(2), {
-    string: [
-        'pack',
-        'extract',
-    ],
     alias: {
         v: 'version',
         h: 'help',
-        p: 'pack',
-        x: 'extract'
     },
     unknown: (cmd) => {
         const name = info().name;
@@ -45,7 +39,8 @@ else
     help();
 
 function main(operation, file) {
-    const packer = getPacker(operation, file);
+    const cwd = process.cwd();
+    const packer = bizzy(file, cwd);
     
     packer.on('error', error => {
         console.error(error.message);
@@ -60,27 +55,15 @@ function main(operation, file) {
     });
 }
 
-function getPacker(operation, file) {
-    const cwd = process.cwd();
-    
-    if (operation === 'extract')
-        return jaguar.extract(file, cwd);
-    
-    const to = path.join(cwd, `${file}.tar.gz`);
-    
-    return jaguar.pack(cwd, to, [
-        file
-    ]);
-}
-
 function getName(str, fn) {
     glob(str, (error, files) => {
         if (error)
-            console.error(error.message);
-        else if (!files.length)
-            console.error('file not found');
-        else
-            fn(files[0]);
+            return console.error(error.message);
+        
+        if (!files.length)
+            return console.error('file not found');
+        
+        fn(files[0]);
     });
 }
 
