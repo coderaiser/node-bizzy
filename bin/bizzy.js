@@ -3,7 +3,6 @@
 'use strict';
 
 const bizzy = require('..');
-const path = require('path');
 const glob = require('glob');
 const argv = process.argv;
 
