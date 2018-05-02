@@ -15,8 +15,6 @@
     "tar-stream": "^1.5.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
     "eslint": "^4.0.0",
     "nodemon": "^1.11.0",
@@ -24,19 +22,7 @@
     "redrun": "^6.0.0",
     "tape": "^4.6.2"
   },
-  "babel": {
-    "presets": [
-      "env"
-    ]
-  },
   "scripts": {
-    "6to5:lib": "babel lib -d legacy/lib",
-    "6to5:bin": "babel bin -d legacy/bin",
-    "wisdom": "npm run build",
-    "build": "redrun 6to5:* legacy:*",
-    "legacy:index": "echo \"module.exports = require('./lib/bizzy');\" > legacy/index.js",
-    "legacy:package": "echo \"module.exports = require('../package');\" > legacy/package.js",
-    "legacy:help": "echo \"module.exports = require('../help');\" > legacy/help.js",
     "lint:eslint": "eslint lib",
     "lint:eslint-bin": "eslint --rule 'no-console:0' bin",
     "lint": "redrun lint:*",
@@ -47,6 +33,9 @@
     "watcher": "nodemon -w test -w lib --exec",
     "watch:test": "npm run watcher -- npm test",
     "watch:coverage": "npm run watcher -- npm run coverage"
+  },
+  "engines": {
+    "node": ">=4.0.0"
   },
   "repository": {
     "type": "git",

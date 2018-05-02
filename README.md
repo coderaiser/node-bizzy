@@ -71,13 +71,6 @@ In case of starting example output should be similar to:
 done
 ```
 
-## Environments
-
-In old `node.js` environments that not fully supports `es2015`, `bizzy` could be used with:
-
-```js
-var bizzy = require('bizzy/legacy');
-```
 ## Related
 
 - [Jag](https://github.com/coderaiser/node-jag "Jag") - Pack files and folders with tar and gzip.
