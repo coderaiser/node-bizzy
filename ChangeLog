@@ -1,3 +1,13 @@
+2018.09.28, v3.0.0
+
+feature:
+- (package) add eslint-plugin-node
+- (package) nyc v13.0.1
+- (package) redrun v7.0.0
+- (package) eslint v5.6.0
+- (package) drop support of node < 8
+
+
 2018.05.02, v2.0.1
 
 feature:
