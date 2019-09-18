@@ -11,7 +11,7 @@
     "glob": "^7.1.0",
     "minimist": "^1.2.0",
     "pipe-io": "^3.0.0",
-    "tar-fs": "^1.15.2",
+    "tar-fs": "^2.0.0",
     "tar-stream": "^2.1.0"
   },
   "devDependencies": {
