@@ -4,7 +4,7 @@
 
 const bizzy = require('..');
 const glob = require('glob');
-const argv = process.argv;
+const {argv} = process;
 
 const args = require('minimist')(argv.slice(2), {
     alias: {
@@ -12,14 +12,12 @@ const args = require('minimist')(argv.slice(2), {
         h: 'help',
     },
     unknown: (cmd) => {
-        const name = info().name;
+        const {name} = info();
         
-        console.error(
-            `'%s' is not a ${name} option. See '${name} --help'.`, cmd
-        );
+        console.error(`'%s' is not a ${name} option. See '${name} --help'.`, cmd);
         
         process.exit(-1);
-    }
+    },
 });
 
 if (args.version)
@@ -27,11 +25,11 @@ if (args.version)
 else if (args.help)
     help();
 else if (args.pack)
-    getName(args.pack, name => {
+    getName(args.pack, (name) => {
         main('pack', name);
     });
 else if (args.extract)
-    getName(args.extract, name => {
+    getName(args.extract, (name) => {
         main('extract', name);
     });
 else
@@ -41,11 +39,11 @@ function main(operation, file) {
     const cwd = process.cwd();
     const packer = bizzy(file, cwd);
     
-    packer.on('error', error => {
+    packer.on('error', (error) => {
         console.error(error.message);
     });
     
-    packer.on('progress', percent => {
+    packer.on('progress', (percent) => {
         process.stdout.write(`\r${percent}%`);
     });
     
@@ -81,9 +79,9 @@ function help() {
     console.log(usage);
     console.log('Options:');
     
-    Object.keys(bin).forEach(name => {
+    for (const name of Object.keys(bin)) {
         const line = `  ${name} ${bin[name]}`;
         console.log(line);
-    });
+    }
 }
 

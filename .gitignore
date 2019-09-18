@@ -1,6 +1,8 @@
+.nyc_output
+*.swp
+
 node_modules
 npm-debug.log
 coverage
-.nyc_output
-*.swp
+yarn-error.log
 

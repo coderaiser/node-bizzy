@@ -1,19 +1,18 @@
 'use strict';
 
-const {EventEmitter} = require('events');
 const {tmpdir} = require('os');
 const {
     sep,
-    join
+    join,
 } = require('path');
 const {
     readFileSync,
     unlinkSync,
     rmdirSync,
-    mkdtempSync
+    mkdtempSync,
 } = require('fs');
 
-const test = require('tape');
+const test = require('supertape');
 const extract = require('..');
 
 test('bizzy: extract: no args', (t) => {
@@ -32,7 +31,7 @@ test('bizzy: extract: error: file not found', (t) => {
     const extracter = extract('hello.tar.bz2', 'hello');
     
     extracter.on('error', (e) => {
-        t.equal(e.message,  expect, 'should emit error when file not found');
+        t.equal(e.message, expect, 'should emit error when file not found');
         t.end();
     });
 });
@@ -94,7 +93,7 @@ test('bizzy: extract: tar', (t) => {
     
     extracter.on('end', () => {
         const pathUnpacked = join(to, 'bizzy.txt');
-        const pathFixture= join(fixture, 'bizzy.txt');
+        const pathFixture = join(fixture, 'bizzy.txt');
         
         const fileUnpacked = readFileSync(pathUnpacked);
         const fileFixture = readFileSync(pathFixture);
