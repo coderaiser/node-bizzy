@@ -10,7 +10,7 @@
     "bzip2-maybe": "^1.0.0",
     "glob": "^7.1.0",
     "minimist": "^1.2.0",
-    "pipe-io": "^3.0.0",
+    "pipe-io": "^4.0.0",
     "tar-fs": "^2.0.0",
     "tar-stream": "^2.1.0"
   },
